@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--{{ url_for("static", filename="test.png") }}-->
+<!--<form action="/submit" method="post">-->
+<!--    <input type="text" name="name" placeholder="Имя">-->
+<!--    <input type="submit" value="Отправить">-->
+<!--</form>-->
+<h1>upload file on server</h1>
+<form enctype="multipart/form-data" method="post">
+    <input type="file" name="file">
+    <input type="submit" value="upload">
+</form>
+</body>
+</html>
