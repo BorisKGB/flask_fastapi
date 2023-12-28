@@ -64,57 +64,18 @@ body {
 
 .main-content {
     display: flex;
-    align-items: center;
+    flex-flow: row wrap;
     margin: 2em 4em 2em 4em;
+    align-items: center;
 }
 
-.home-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+.product {
+    width: 33%;
+    margin: 2rem;
 }
 
-.main-content .h1 {
-    color: black;
-    font-size: 60px;
-    font-family: Gilroy-Bold;
-}
-
-.main-content .description {
-    color: #888888;
-    font-size: 20px;
-    font-family: Gilroy-Medium;
-    width: 80%;
-}
-
-.main-content__buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
-    font-size: 15px;
-    font-family: Gilroy-Bold;
-}
-
-.main-content__buttons .active-button {
-    background: #F25822;
-    color: white;
-    border-radius: 30px;
-    border: 0;
-    height: 3em;
-    width: 9em;
-}
-
-.main-content__buttons .hidden-button {
-    background: white;
-    color: #AAAAAA;
-    border: 0;
-    height: 3em;
-    width: 9em;
-}
-
-.main-content__image {
-    height: 75%;
-    align-self: flex-start;
+.product__img {
+  max-width: 100%;
 }
 
 .brand-logo {

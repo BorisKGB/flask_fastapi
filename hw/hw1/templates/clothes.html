@@ -5,5 +5,10 @@
 {% endblock %}
 
 {% block body %}
-<p>there will be some clothes</p>
+{% for product in products %}
+<div class="product">
+    <img class="product__img" src="{{ url_for('static', filename=product['img']) }}">
+    <p>{{ product['description'] }}</p>
+</div>
+{% endfor %}
 {% endblock %}
