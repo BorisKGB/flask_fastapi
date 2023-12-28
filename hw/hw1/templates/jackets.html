@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Jackets</title>
+{% endblock %}
+
+{% block body %}
+{% for product in products %}
+<div class="product">
+    <img class="product__img" src="{{ url_for('static', filename=product['img']) }}">
+    <p>{{ product['description'] }}</p>
+</div>
+{% endfor %}
+{% endblock %}

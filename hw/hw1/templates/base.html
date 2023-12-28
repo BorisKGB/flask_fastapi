@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Title</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="menu-bar header">
+        <div class="logo">
+            <img class="logo__img" src="{{ url_for('static', filename='logo.png') }}">
+            <div class="logo__txt1">
+                My<span class="logo__txt2">Shop</span>
+            </div>
+        </div>
+            <nav class="nav__menu">
+                {% for el_name, el_url_for in menu_elements.items() %}
+                <li class="{% if el_name == page %}"menu__link__active{% else %}menu__link{% endif %}"><a href="{{ url_for(el_url_for) }}">{{ el_name }}</a></li>
+                {% endfor %}
+            </nav>
+    </div>
+    <div class="main-content">
+        {% block body %}
+        <p>error</p>
+        {% endblock %}
+    </div>
+    <div class="brand-logo footer">
+        <img src="{{ url_for('static', filename='partner1.png') }}">
+        <img src="{{ url_for('static', filename='partner2.png') }}">
+        <img src="{{ url_for('static', filename='partner3.png') }}">
+    </div>
+</body>
+</html>
