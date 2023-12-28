@@ -122,3 +122,8 @@ body {
     justify-content: space-between;
     margin: 3em;
 }
+
+.brand-logo img{
+    width: 300px;
+    height: 300px;
+}
