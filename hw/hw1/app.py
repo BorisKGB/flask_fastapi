@@ -28,7 +28,7 @@ menu_elements = {
 
 
 @app.route('/')
-def main(template: str = "main"):
+def main():
     return render_template("main.html", page="Main", menu_elements=menu_elements)
 
 
