@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <title>
+        {% block title %}
+        My site
+        {% endblock %}
+    </title>
+</head>
+<body>
+<div class="container-fluid">
+    <ul class="nav nav-pills justify-content-end align-items-end">
+        <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link">Main page</a></li>
+        <li class="nav-item"><a href="{{ url_for('data') }}" class="nav-link">Data page</a></li>
+    </ul>
+
+    {% block content %}
+    No data here
+    {% endblock %}
+
+    <div class="row fixed-bottom modal-footer">
+        <hr>
+        <p>All right reserved</p>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

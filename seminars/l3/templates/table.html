@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+  <tr>
+    <td>Id</td>
+    <td>Name</td>
+    <td>Surname</td>
+    <td>Email</td>
+    <td>Age</td>
+    <td>Gender</td>
+    <td>Group</td>
+    <td>Faculty</td>
+  </tr>
+  {% for student in students %}
+  <tr>
+    <td>{{ student.id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.surname }}</td>
+    <td>{{ student.email }}</td>
+    <td>{{ student.age }}</td>
+    <td>{{ student.gender }}</td>
+    <td>{{ student.group }}</td>
+    <td>{{ student.faculty.name }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
