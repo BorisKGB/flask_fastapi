@@ -10,4 +10,4 @@ class User(db.Model):
     # according to
     # https://stackoverflow.com/questions/247304/what-data-type-to-use-for-hashed-password-field-and-what-length
     # SHA-256 generates a 256-bit hash value. You can use CHAR(64) or BINARY(32)
-    password = db.Column(db.Binary(32), nullable=False)
+    password = db.Column(db.BINARY(32), nullable=False)
