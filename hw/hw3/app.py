@@ -28,7 +28,7 @@ def register():
         user = User(name=form.name.data,
                     surname=form.surname.data,
                     email=form.email.data,
-                    password=sha256(form.password.data.encode(encoding='UTF-8')))
+                    password=sha256(form.password.data.encode(encoding='UTF-8')).digest())
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('index'))
