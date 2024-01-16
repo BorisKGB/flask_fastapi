@@ -60,6 +60,35 @@ def all_tables_exist() -> bool:
         for column_name, wanted_column_data in table_data.columns.items():
             if column_name not in existed_table_columns:
                 raise Exception("Incorrect SQL structure, check database scheme")
+            existed_column_info = dict()
+            wanted_column_info = dict()
+            for column_param in existed_table_columns[column_name]:
+                if column_param == 'primary_key':
+                    existed_column_info[column_param] = bool(existed_table_columns[column_name][column_param])
+                    wanted_column_info[column_param] = wanted_tables[table_name].columns[
+                        column_name].__getattribute__(column_param)
+                elif column_param == 'type':
+                    col_param = existed_table_columns[column_name][column_param]
+                    col_len = ""
+                    if "length" in existed_table_columns[column_name][column_param].__dict__:
+                        col_len = str(col_param.length)
+                    existed_column_info[column_param] = col_param.python_type.__name__ + col_len
+                    col_param = wanted_tables[table_name].columns[column_name].__getattribute__(column_param)
+                    col_len = ""
+                    if "length" in wanted_tables[table_name].columns[column_name].type.__dict__:
+                        col_len = str(col_param.length)
+                    wanted_column_info[column_param] = col_param.python_type.__name__ + col_len
+                else:
+                    existed_column_info[column_param] = existed_table_columns[column_name][column_param]
+                    wanted_column_info[column_param] = wanted_tables[table_name].columns[
+                        column_name].__getattribute__(column_param)
+            for column_param in existed_column_info:
+                # ignore type parameter
+                # Wanted types does not equal to Existed types
+                #  String(80) -> Varchar(80) suppressed by checking python_type.__name__
+                #  Decimal -> bytes(32) Do not know what to do with this yet
+                if column_param != 'type' and existed_column_info[column_param] != wanted_column_info[column_param]:
+                    raise Exception("Incorrect SQL structure, check database scheme")
     return True
 
 
