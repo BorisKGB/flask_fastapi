@@ -45,26 +45,30 @@ def init_db():
 
 def all_tables_exist() -> bool:
     """
-    Validate database tables
-    Does not validate columns
+    Validate database tables and columns by names
+    Does not validate column types
     :return: bool, validation result
+    :raises Exception: on mismatch columns data
     """
     wanted_tables = db.metadata.tables
-    existed_tables = inspect(db.engine).get_table_names()
+    db_inspector = inspect(db.engine)
+    existed_tables_list = db_inspector.get_table_names()
     for table_name, table_data in wanted_tables.items():
-        if table_name not in existed_tables:
+        if table_name not in existed_tables_list:
             return False
+        existed_table_columns = {el['name']: el for el in inspect(db.engine).get_columns('user')}
+        for column_name, wanted_column_data in table_data.columns.items():
+            if column_name not in existed_table_columns:
+                raise Exception("Incorrect SQL structure, check database scheme")
     return True
-    # inspect(db.engine)
-    # inspect(db.engine).get_table_names()
-    # inspect(db.engine).get_columns('user')
 
 
 if __name__ == '__main__':
     # https://stackoverflow.com/questions/30428639/check-database-schema-matches-sqlalchemy-models-on-application-startup
     with app.app_context():
         # я не осилил полноценную проверку структуры БД
-        # не понял как получить wanted_table_columns в виде допустимом к сравнению с existed_table_columns
+        # могу какими-то окольными путями получить инфо о колонках, но wanted column String(length=80), а existed column Varchar(length=80)
+        # пока не понимаю как это обойти
         if not all_tables_exist():
             db.create_all()
             print("Database was created")  # TODO update to logging
