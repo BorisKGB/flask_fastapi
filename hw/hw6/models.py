@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field, field_validator
+from datetime import datetime
 import re
 
 
@@ -32,3 +33,5 @@ class Order(BaseModel):
     id: int = Field(..., ge=0)
     user_id: int = Field(..., ge=0)
     product_id: int = Field(..., ge=0)
+    date: datetime = Field(default_factory=datetime.now)
+    status: bool
