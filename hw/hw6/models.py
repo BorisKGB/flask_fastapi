@@ -12,7 +12,6 @@ class User(BaseModel):
 
     # https://www.slingacademy.com/article/pydantic-validate-user-email-and-password/
     # `from pydantic import EmailStr` rejected due to external dependencies
-    @classmethod
     @field_validator("email")
     def check_email(cls, value):
         # use a regex to check that the email has a valid format
