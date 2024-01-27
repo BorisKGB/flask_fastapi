@@ -152,8 +152,8 @@ async def delete_user(user_id: int):
 async def delete_product(product_id: int):
     # TODO: add 404 if trying to delete not existing element
     product_orders = await database.fetch_one(orders.select().where(orders.c.product_id == product_id))
-    # if product_orders:
-    #     raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"This product included in Orders, delete Orders first")
+    if product_orders:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"This product included in Orders, delete Orders first")
     await database.execute(products.delete().where(products.c.id == product_id))
     return {"message": "Product deleted"}
 
