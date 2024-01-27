@@ -33,4 +33,4 @@ class Order(BaseModel):
     user_id: int = Field(..., ge=0)
     product_id: int = Field(..., ge=0)
     date: datetime = Field(default_factory=datetime.now)
-    status: bool
+    status: bool = Field(default=False)
