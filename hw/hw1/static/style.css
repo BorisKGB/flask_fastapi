@@ -1,0 +1,90 @@
+* {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+    font-family: Gilroy-Bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.menu-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    margin: 2em 2em 2em 4em;
+}
+
+.logo {
+    display: flex;
+    align-items: flex-start;
+    font-size: 24px;
+    font-family: Gilroy-Bold;
+    gap: 0.5em;
+}
+
+.logo__txt1 {
+    color: #F25822;
+    color: black;
+}
+
+.logo__txt2 {
+    font-family: Gilroy-Bold;
+    color: #F25822;
+}
+
+.nav__menu {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    gap: 2em;
+    font-size: 14px;
+    font-family: Gilroy-Medium;
+}
+
+.menu__link a {
+    color: black;
+}
+
+.menu__link__active a {
+    color: #F25822;
+    font-family: Gilroy-SemiBold;
+}
+
+.main-content {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 2em 4em 2em 4em;
+    align-items: center;
+}
+
+.product {
+    width: 33%;
+    margin: 2rem;
+}
+
+.product__img {
+  max-width: 100%;
+}
+
+.brand-logo {
+    display: flex;
+    justify-content: space-between;
+    margin: 3em;
+}
+
+.brand-logo img{
+    width: 300px;
+    height: 300px;
+}
